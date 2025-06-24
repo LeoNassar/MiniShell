@@ -3,13 +3,13 @@ NAME	=	minishell
 CC		=	cc
 FLAG	=	-Wall -Wextra -Werror -g3
 
-DIRLIB	=	./Libft/
+DIRLIB	=	./libft/
 FILELIB	=	libft.a
 NAMELFT	=	$(addprefix $(DIRLIB), $(FILELIB))
 
 SRC_DIR	=	src/
 OBJ_DIR	=	obj/
-INCLUDE	=	-I ./include -I ./Libft
+INCLUDE	=	-I ./include -I ./libft
 HEADER 	=	include/minishell.h
 
 # Color

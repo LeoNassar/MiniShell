@@ -19,7 +19,7 @@ static void	error_malloc(void)
 
 static void	update_oldpwd(t_data *data)
 {
-	t_list	*tmp;
+	t_node	*tmp;
 	char	*test;
 	int		len;
 
