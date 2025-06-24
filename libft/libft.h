@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <bsd/string.h>
+# include <strings.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 32

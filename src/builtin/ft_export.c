@@ -2,7 +2,7 @@
 #include "../../include/minishell.h"
 
 //if export and no other args
-static bool	export_no_args(t_list *env)
+static bool	export_no_args(t_node *env)
 {
 	char	**arr;
 	int		i;
@@ -47,11 +47,11 @@ static bool	valid_identifier(char *str)
 }
 
 //checks if identifier already in env
-static int	exist(char *str, t_list *env)
+static int	exist(char *str, t_node *env)
 {
 	int		i;
 	int		j;
-	t_list	*tmp;
+	t_node	*tmp;
 
 	if (!env)
 		return (-1);
@@ -77,7 +77,7 @@ static int	exist(char *str, t_list *env)
 }
 
 //export but norm
-bool	export(char *str, t_list **env)
+bool	export(char *str, t_node **env)
 {
 	int		pos;
 	int		i;
@@ -105,7 +105,7 @@ bool	export(char *str, t_list **env)
 }
 
 //export
-int	ft_export(char **str, t_list **env)
+int	ft_export(char **str, t_node **env)
 {
 	int	exit_code;
 	int	i;

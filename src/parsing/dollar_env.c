@@ -27,7 +27,7 @@ static int	end_word(char *str, char *env)
 /* return 1 si $VAR dans env sinon 0 */
 int	exist_in_env(char *line, int *i, t_data *data)
 {
-	t_list	*tmp;
+	t_node	*tmp;
 	int		len;
 
 	if (line[*i + 1] == '?' || line[*i + 1] == '$')
@@ -48,9 +48,9 @@ int	exist_in_env(char *line, int *i, t_data *data)
 	return (0);
 }
 
-char	*get_elem_env(t_list *env, char *key)
+char	*get_elem_env(t_node *env, char *key)
 {
-	t_list	*tmp;
+	t_node	*tmp;
 	int		len;
 	int		t;
 

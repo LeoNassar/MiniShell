@@ -2,9 +2,9 @@
 #include "../../include/minishell.h"
 
 //Transform lst to array
-char	**lst_to_arr(t_list *env)
+char	**lst_to_arr(t_node *env)
 {
-	t_list	*lst;
+	t_node	*lst;
 	char	**dest;
 	int		i;
 

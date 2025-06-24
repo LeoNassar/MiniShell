@@ -19,11 +19,11 @@ static bool	syntax(char *str)
 }
 
 //checks if identifier already in env
-static int	exist(char *str, t_list *env)
+static int	exist(char *str, t_node *env)
 {
 	int		i;
 	int		j;
-	t_list	*tmp;
+	t_node	*tmp;
 
 	if (!env)
 		return (-1);
@@ -46,11 +46,11 @@ static int	exist(char *str, t_list *env)
 	return (-1);
 }
 
-//static bool	unset(char *str, t_list **env)
+//static bool	unset(char *str, t_node **env)
 //{
 //	int		pos;
 //	int		i;
-//	t_list	**tmp;
+//	t_node	**tmp;
 
 //	if (!str || !(*str))
 //		return (false);
@@ -75,7 +75,7 @@ static int	exist(char *str, t_list *env)
 //	return (false);
 //}
 
-static void	check_env(t_list *tmp, t_list **env)
+static void	check_env(t_node *tmp, t_node **env)
 {
 	if (tmp == (*env))
 		(*env) = tmp->next;
@@ -83,11 +83,11 @@ static void	check_env(t_list *tmp, t_list **env)
 		(*env) = NULL;
 }
 
-static bool	unset(char *str, t_list **env)
+static bool	unset(char *str, t_node **env)
 {
 	int		pos;
 	int		i;
-	t_list	*tmp;
+	t_node	*tmp;
 
 	if (!str || !(*str))
 		return (false);
@@ -112,7 +112,7 @@ static bool	unset(char *str, t_list **env)
 	return (false);
 }
 
-int	ft_unset(char **str, t_list **env)
+int	ft_unset(char **str, t_node **env)
 {
 	int	exit_code;
 	int	i;

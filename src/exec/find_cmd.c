@@ -18,9 +18,9 @@ int	ft_strslashjoin(char *dest, char *str, char *env, int *index)
 	return (0);
 }
 
-static char	*create_paths(t_list *env, int len)
+static char	*create_paths(t_node *env, int len)
 {
-	t_list	*tmp;
+	t_node	*tmp;
 
 	tmp = env;
 	while (len--)
@@ -39,7 +39,7 @@ static char	*cmd_not_found(char *sample)
 	return (NULL);
 }
 
-char	*find_cmd(t_data *data, char *sample, t_list *env)
+char	*find_cmd(t_data *data, char *sample, t_node *env)
 {
 	char		*paths;
 	char		path[PATH_MAX];

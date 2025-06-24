@@ -23,8 +23,8 @@
 # include <sys/stat.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include "../Libft/src/libft.h"
-# include "../Libft/src/get_next_line.h"
+# include "../libft/libft.h"
+# include "../libft/get_next_line/get_next_line.h"
 
 # define INPUT		1	//"<"
 # define HEREDOC	2	//"<<"
@@ -62,16 +62,16 @@ typedef struct s_token
 	struct s_token	*next;
 }				t_token;
 
-typedef struct s_list
+typedef struct s_node
 {
 	char			*str;
-	struct s_list	*prev;
-	struct s_list	*next;
-}					t_list;
+	struct s_node  *prev;
+	struct s_node  *next;
+}                                       t_node;
 
 typedef struct s_data
 {
-	t_list	*env;
+	t_node	*env;
 	t_token	*token;
 	t_cmd	*cmd;
 	int		exit_code;
@@ -83,9 +83,9 @@ typedef struct s_data
 int		make_env(t_data *data, char **env);
 
 /* List utils */
-int		free_list(t_list **list);
-int		append(t_list **list, char *elem);
-size_t	len_list(t_list *list);
+int		free_list(t_node **list);
+int		append(t_node **list, char *elem);
+size_t	len_list(t_node *list);
 
 /* quote */
 void	quoting_choice(bool *dq, bool *sq, int *index, char c);
@@ -93,7 +93,7 @@ int		open_quote(t_data *data, char *line);
 
 /* dollar_env */
 int		exist_in_env(char *line, int *i, t_data *data);
-char	*get_elem_env(t_list *env, char *key);
+char	*get_elem_env(t_node *env, char *key);
 char	*get_dollar_word(char *line, int size);
 
 /* dollar_replace */
@@ -120,14 +120,14 @@ bool	make_env2(t_data *data);
 void	absolute_path(char **path, char *cmd, t_data *data);
 
 //ft_env.c
-int		ft_env(t_list	*env);
+int		ft_env(t_node	*env);
 //ft_export.c
-int		ft_export(char **str, t_list **env);
-bool	export(char *str, t_list **env);
+int		ft_export(char **str, t_node **env);
+bool	export(char *str, t_node **env);
 //ft_echo
 int		ft_echo(char **args);
 //ft_unset.c
-int		ft_unset(char **str, t_list **env);
+int		ft_unset(char **str, t_node **env);
 // ft_pwd
 int		ft_pwd(void);
 // ft_cd
@@ -142,7 +142,7 @@ void	free_all(t_data *data, char *err, int ext);
 bool	print_error_token(t_token *token, t_data *data);
 
 //array_utils.c
-char	**lst_to_arr(t_list *env);
+char	**lst_to_arr(t_node *env);
 void	sort_array(char **arr, int len);
 
 //list_cmd.c
@@ -171,7 +171,7 @@ bool	is_builtin(char *cmd);
 bool	launch_builtin(t_data *data, t_cmd *cmd);
 
 //find_cmd.c
-char	*find_cmd(t_data *data, char *sample, t_list *env);
+char	*find_cmd(t_data *data, char *sample, t_node *env);
 
 //exec2.c
 void	child_process(t_data *data, t_cmd *cmd, int *pip);

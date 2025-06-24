@@ -1,9 +1,9 @@
 
 #include "../../include/minishell.h"
 
-int	ft_env(t_list *env)
+int	ft_env(t_node *env)
 {
-	t_list	*temp;
+	t_node	*temp;
 
 	temp = env;
 	if (!temp)

@@ -5,7 +5,7 @@ pid_t	g_signal_pid;
 
 int	make_env(t_data *data, char **env)
 {
-	t_list	*list;
+	t_node	*list;
 	int		i;
 	char	*tmp;
 
