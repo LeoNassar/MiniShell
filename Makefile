@@ -25,7 +25,7 @@ CYAN		= \033[0;96m
 WHITE		= \033[0;97m
 
 # Source
-FILES	=	main quote dollar_env dollar_replace list_utils signals create_token \
+FILES	=	main quote ansi_quotes dollar_env dollar_replace list_utils signals create_token \
 			list_token ms_utils ft_env ft_export free array_utils ft_unset ft_pwd \
 			ft_cd list_cmd create_cmd cmd_fd here_doc cmd_param exec launch_builtin \
 			ft_echo ft_exit find_cmd exec2 debug signals2

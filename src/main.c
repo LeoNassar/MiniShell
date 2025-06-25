@@ -61,13 +61,13 @@ bool	parseline(t_data *data, char *line)
 		free(line);
 		return (false);
 	}
-	if (!replace_dollar(&line, data) || !create_list_token(&data->token, line))
+       if (!replace_dollar(&line, data) || !replace_ansi_quotes(&line)
+               || !create_list_token(&data->token, line))
 	{
 		free(line);
 		free_all(data, ERR_MALLOC, EXT_MALLOC);
 	}
-	free(line);
-	print_token(data->token);
+       free(line);
 	if (data->token && data->token->prev->type == PIPE)
 	{
 		write(2, "Error: Unclosed pipe\n", 21);

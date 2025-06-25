@@ -100,6 +100,7 @@ char	*get_dollar_word(char *line, int size);
 int		add_dollar(char *line, int *index, char **str, t_data *data);
 int		add_char(char *c, char **str, t_data *data, int *index);
 int		replace_dollar(char **line, t_data *data);
+int		replace_ansi_quotes(char **line);
 
 //signals.c
 void	clear_rl_line(void);

@@ -32,19 +32,22 @@ int	exist_in_env(char *line, int *i, t_data *data)
 
 	if (line[*i + 1] == '?' || line[*i + 1] == '$')
 		return (2);
-	tmp = data->env;
-	len = len_list(tmp);
-	while (len--)
-	{
-		if (ft_strncmp(tmp->str, &line[*i + 1], \
-			end_word(&line[*i + 1], tmp->str)) == 0)
-		{
-			*i += ft_strlen(tmp->str) - \
-				ft_strlen(ft_strchr(tmp->str, '=')) + 1;
-			return (1);
-		}
-		tmp = tmp->next;
-	}
+       tmp = data->env;
+       len = len_list(tmp);
+       while (len--)
+       {
+               int     word_len;
+
+               word_len = end_word(&line[*i + 1], tmp->str);
+               if (word_len > 0 &&
+                       ft_strncmp(tmp->str, &line[*i + 1], word_len) == 0)
+               {
+                       *i += ft_strlen(tmp->str) -
+                                       ft_strlen(ft_strchr(tmp->str, '=')) + 1;
+                       return (1);
+               }
+               tmp = tmp->next;
+       }
 	return (0);
 }
 
